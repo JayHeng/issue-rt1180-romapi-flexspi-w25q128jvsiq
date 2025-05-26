@@ -126,10 +126,8 @@ static status_t I3C_MasterWaitForTxReady(I3C_Type *base, uint8_t byteCounts);
 /*! @brief Array to map I3C instance number to base pointer. */
 static I3C_Type *const kI3cBases[] = I3C_BASE_PTRS;
 
-#if defined(I3C_IRQS)
 /*! @brief Array to map I3C instance number to IRQ number. */
 IRQn_Type const kI3cIrqs[] = I3C_IRQS;
-#endif
 
 #if !(defined(FSL_SDK_DISABLE_DRIVER_CLOCK_CONTROL) && FSL_SDK_DISABLE_DRIVER_CLOCK_CONTROL)
 /*! @brief Array to map I3C instance number to clock gate enum. */
@@ -1738,7 +1736,7 @@ status_t I3C_MasterProcessDAASpecifiedBaudrate(I3C_Type *base,
 i3c_device_info_t *I3C_MasterGetDeviceListAfterDAA(I3C_Type *base, uint8_t *count)
 {
     assert(NULL != count);
-
+    
     uint32_t instance = I3C_GetInstance(base);
 
     *count = usedDevCount[instance];
@@ -2067,12 +2065,10 @@ void I3C_MasterTransferCreateHandle(I3C_Type *base,
     /* Reset fifos. These flags clear automatically. */
     base->MDATACTRL |= I3C_MDATACTRL_FLUSHTB_MASK | I3C_MDATACTRL_FLUSHFB_MASK;
 
-#if defined(I3C_IRQS)
     /* Enable NVIC IRQ, this only enables the IRQ directly connected to the NVIC.
      In some cases the I3C IRQ is configured through INTMUX, user needs to enable
      INTMUX IRQ in application code. */
     (void)EnableIRQ(kI3cIrqs[instance]);
-#endif
 
     /* Clear internal IRQ enables and enable NVIC IRQ. */
     I3C_MasterEnableInterrupts(base, (uint32_t)kMasterIrqFlags);
@@ -2190,8 +2186,9 @@ static void I3C_TransferStateMachineWaitRepeatedStartCompleteState(I3C_Type *bas
         handle->state = (uint8_t)kTransferDataState;
         I3C_MasterDisableInterrupts(base, (uint32_t)kI3C_MasterTxReadyFlag);
 
-        if ((handle->remainingBytes < 256U) && (handle->rxTermOps == kI3C_RxAutoTerm))
+        if (handle->remainingBytes < 256U)
         {
+            handle->rxTermOps = (handle->rxTermOps == kI3C_RxTermDisable) ? handle->rxTermOps : kI3C_RxAutoTerm;
             stateParams->result =
                 I3C_MasterRepeatedStartWithRxSize(base, handle->transfer.busType, handle->transfer.slaveAddress,
                                                   kI3C_Read, (uint8_t)handle->remainingBytes);
@@ -2247,14 +2244,7 @@ static void I3C_TransferStateMachineTransferDataState(I3C_Type *base,
         /* Make sure there is data in the rx fifo. */
         if (0UL == (stateParams->rxCount)--)
         {
-            if (0UL != (stateParams->status & (uint32_t)kI3C_MasterCompleteFlag))
-            {
-                handle->state = (uint8_t)kWaitForCompletionState;
-            }
-            else
-            {
-                stateParams->state_complete = true;
-            }
+            stateParams->state_complete = true;
             return;
         }
 
@@ -3184,9 +3174,7 @@ void I3C_SlaveTransferCreateHandle(I3C_Type *base,
 
     /* Clear internal IRQ enables and enable NVIC IRQ. */
     I3C_SlaveDisableInterrupts(base, (uint32_t)kSlaveIrqFlags);
-#if defined(I3C_IRQS)
     (void)EnableIRQ(kI3cIrqs[instance]);
-#endif
 }
 
 /*!

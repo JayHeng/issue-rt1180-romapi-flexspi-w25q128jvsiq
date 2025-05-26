@@ -63,10 +63,8 @@ static const clock_ip_name_t s_tpmClocks[] = TPM_CLOCKS;
 /* Array of TPM callback function pointer. */
 static tpm_callback_t s_tpmCallback[ARRAY_SIZE(s_tpmBases)];
 
-#if defined(TPM_IRQS)
 /* Array to map TPM instance to IRQ number. */
 static const IRQn_Type s_tpmIRQ[] = TPM_IRQS;
-#endif
 
 #if defined(TPM_RESETS_ARRAY)
 /* Reset array */
@@ -1144,10 +1142,8 @@ void TPM_RegisterCallBack(TPM_Type *base, tpm_callback_t callback)
     /* Create TPM callback instance. */
     s_tpmCallback[instance] = callback;
 
-#if defined(TPM_IRQS)
     /* Enable IRQ. */
     (void)EnableIRQ(s_tpmIRQ[instance]);
-#endif
 }
 
 #if defined(TPM0)

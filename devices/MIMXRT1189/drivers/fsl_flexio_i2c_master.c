@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
- * Copyright 2016-2022, 2025 NXP
+ * Copyright 2016-2022 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -740,21 +740,14 @@ status_t FLEXIO_I2C_MasterInit(FLEXIO_I2C_Type *base, flexio_i2c_master_config_t
 
     /* Configure FLEXIO I2C Master. */
     controlVal = base->flexioBase->CTRL;
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     controlVal &=
         ~(FLEXIO_CTRL_DOZEN_MASK | FLEXIO_CTRL_DBGE_MASK | FLEXIO_CTRL_FASTACC_MASK | FLEXIO_CTRL_FLEXEN_MASK);
-#else
-    controlVal &=
-        ~(FLEXIO_CTRL_DBGE_MASK | FLEXIO_CTRL_FASTACC_MASK | FLEXIO_CTRL_FLEXEN_MASK);
-#endif
     controlVal |= (FLEXIO_CTRL_DBGE(masterConfig->enableInDebug) | FLEXIO_CTRL_FASTACC(masterConfig->enableFastAccess) |
                    FLEXIO_CTRL_FLEXEN(masterConfig->enableMaster));
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     if (!masterConfig->enableInDoze)
     {
         controlVal |= FLEXIO_CTRL_DOZEN_MASK;
     }
-#endif
 
     base->flexioBase->CTRL = controlVal;
     /* Disable internal IRQs. */
@@ -812,9 +805,7 @@ void FLEXIO_I2C_MasterGetDefaultConfig(flexio_i2c_master_config_t *masterConfig)
     (void)memset(masterConfig, 0, sizeof(*masterConfig));
 
     masterConfig->enableMaster     = true;
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     masterConfig->enableInDoze     = false;
-#endif
     masterConfig->enableInDebug    = true;
     masterConfig->enableFastAccess = false;
 
@@ -1242,9 +1233,7 @@ status_t FLEXIO_I2C_MasterTransferCreateHandle(FLEXIO_I2C_Type *base,
 {
     assert(handle != NULL);
 
-#if defined(FLEXIO_IRQS)
     IRQn_Type flexio_irqs[] = FLEXIO_IRQS;
-#endif
 
     /* Zero the handle. */
     (void)memset(handle, 0, sizeof(*handle));
@@ -1253,11 +1242,9 @@ status_t FLEXIO_I2C_MasterTransferCreateHandle(FLEXIO_I2C_Type *base,
     handle->completionCallback = callback;
     handle->userData           = userData;
 
-#if defined(FLEXIO_IRQS)
     /* Clear pending NVIC IRQ before enable NVIC IRQ. */
     NVIC_ClearPendingIRQ(flexio_irqs[FLEXIO_I2C_GetInstance(base)]);
     (void)EnableIRQ(flexio_irqs[FLEXIO_I2C_GetInstance(base)]);
-#endif
 
     /* Save the context in global variables to support the double weak mechanism. */
     return FLEXIO_RegisterHandleIRQ(base, handle, FLEXIO_I2C_MasterTransferHandleIRQ);

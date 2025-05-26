@@ -375,9 +375,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -665,9 +665,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -775,7 +775,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -1507,9 +1506,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1797,9 +1796,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -1907,7 +1906,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -2640,9 +2638,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2930,9 +2928,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -3040,7 +3038,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -3771,9 +3768,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -4061,9 +4058,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -4171,7 +4168,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -4903,9 +4899,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -5193,9 +5189,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -5303,7 +5299,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -6036,9 +6031,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -6326,9 +6321,9 @@
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/cm33</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
           <state>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/utilities/str</state>
+          <state>$PROJ_DIR$/../../../../../../components/uart</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id</state>
           <state>$PROJ_DIR$/../../../../../../components/silicon_id/socs</state>
-          <state>$PROJ_DIR$/../../../../../../components/uart</state>
         </option>
         <option>
           <name>AExtraOptionsCheckV2</name>
@@ -6436,7 +6431,6 @@
         </option>
         <option>
           <name>IlinkConfigDefines</name>
-          <state>__stack_size__=0x1000</state>
         </option>
         <option>
           <name>IlinkMapFile</name>
@@ -6878,9 +6872,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/fsl_iomuxc.h</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/fsl_memory.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$/../../../../../../devices/MIMXRT1189/drivers/fsl_memory.h</name>
@@ -7345,6 +7336,15 @@
   <group>
     <name>component</name>
     <group>
+      <name>uart</name>
+      <file>
+        <name>$PROJ_DIR$/../../../../../../components/uart/fsl_adapter_uart.h</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../../../../../../components/uart/fsl_adapter_lpuart.c</name>
+      </file>
+    </group>
+    <group>
       <name>silicon_id</name>
       <file>
         <name>$PROJ_DIR$/../../../../../../components/silicon_id/fsl_silicon_id.h</name>
@@ -7359,15 +7359,6 @@
     <file>
       <name>$PROJ_DIR$/../../../../../../components/silicon_id/socs/fsl_silicon_id_soc.h</name>
     </file>
-    <group>
-      <name>uart</name>
-      <file>
-        <name>$PROJ_DIR$/../../../../../../components/uart/fsl_adapter_uart.h</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$/../../../../../../components/uart/fsl_adapter_lpuart.c</name>
-      </file>
-    </group>
   </group>
   <group>
     <name>doc</name>
@@ -7376,9 +7367,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$/../example_board_readme.md</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$/../examples_shared_readme.md</name>
     </file>
   </group>
 </project>

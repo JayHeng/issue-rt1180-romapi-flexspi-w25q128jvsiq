@@ -1,5 +1,5 @@
 /*
- * Copyright 2024-2025 NXP
+ * Copyright 2024 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -7,11 +7,6 @@
 
 #include "fsl_s3mu.h"
 #include "fsl_ele_base_api.h"
-
-/* Component ID definition, used by tools. */
-#ifndef FSL_COMPONENT_ID
-#define FSL_COMPONENT_ID "platform.drivers.ele_base_api"
-#endif
 
 /*******************************************************************************
  * Prototypes

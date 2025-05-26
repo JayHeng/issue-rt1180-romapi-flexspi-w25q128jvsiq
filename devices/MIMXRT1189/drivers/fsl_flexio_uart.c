@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015-2016, Freescale Semiconductor, Inc.
- * Copyright 2016-2021, 2025 NXP
+ * Copyright 2016-2021 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -145,19 +145,13 @@ status_t FLEXIO_UART_Init(FLEXIO_UART_Type *base, const flexio_uart_config_t *us
 
     /* Configure FLEXIO UART */
     ctrlReg = base->flexioBase->CTRL;
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     ctrlReg &= ~(FLEXIO_CTRL_DOZEN_MASK | FLEXIO_CTRL_DBGE_MASK | FLEXIO_CTRL_FASTACC_MASK | FLEXIO_CTRL_FLEXEN_MASK);
-#else
-    ctrlReg &= ~(FLEXIO_CTRL_DBGE_MASK | FLEXIO_CTRL_FASTACC_MASK | FLEXIO_CTRL_FLEXEN_MASK);
-#endif
     ctrlReg |= (FLEXIO_CTRL_DBGE(userConfig->enableInDebug) | FLEXIO_CTRL_FASTACC(userConfig->enableFastAccess) |
                 FLEXIO_CTRL_FLEXEN(userConfig->enableUart));
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     if (!userConfig->enableInDoze)
     {
         ctrlReg |= FLEXIO_CTRL_DOZEN_MASK;
     }
-#endif
 
     base->flexioBase->CTRL = ctrlReg;
 
@@ -301,9 +295,7 @@ void FLEXIO_UART_GetDefaultConfig(flexio_uart_config_t *userConfig)
     (void)memset(userConfig, 0, sizeof(*userConfig));
 
     userConfig->enableUart       = true;
-#if !(defined(FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT) && (FSL_FEATURE_FLEXIO_HAS_DOZE_MODE_SUPPORT == 0))
     userConfig->enableInDoze     = false;
-#endif
     userConfig->enableInDebug    = true;
     userConfig->enableFastAccess = false;
     /* Default baud rate 115200. */
@@ -513,9 +505,7 @@ status_t FLEXIO_UART_TransferCreateHandle(FLEXIO_UART_Type *base,
 {
     assert(handle != NULL);
 
-#if defined(FLEXIO_IRQS)
     IRQn_Type flexio_irqs[] = FLEXIO_IRQS;
-#endif
 
     /* Zero the handle. */
     (void)memset(handle, 0, sizeof(*handle));
@@ -528,12 +518,10 @@ status_t FLEXIO_UART_TransferCreateHandle(FLEXIO_UART_Type *base,
     handle->callback = callback;
     handle->userData = userData;
 
-#if defined(FLEXIO_IRQS)
     /* Clear pending NVIC IRQ before enable NVIC IRQ. */
     NVIC_ClearPendingIRQ(flexio_irqs[FLEXIO_UART_GetInstance(base)]);
     /* Enable interrupt in NVIC. */
     (void)EnableIRQ(flexio_irqs[FLEXIO_UART_GetInstance(base)]);
-#endif
 
     /* Save the context in global variables to support the double weak mechanism. */
     return FLEXIO_RegisterHandleIRQ(base, handle, FLEXIO_UART_TransferHandleIRQ);

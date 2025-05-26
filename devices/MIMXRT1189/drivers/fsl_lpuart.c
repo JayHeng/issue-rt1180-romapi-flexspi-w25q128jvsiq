@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015-2016, Freescale Semiconductor, Inc.
- * Copyright 2016-2022, 2025 NXP
+ * Copyright 2016-2022 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -148,16 +148,10 @@ static LPUART_Type *const s_lpuartBases[] = LPUART_BASE_PTRS;
 void *s_lpuartHandle[ARRAY_SIZE(s_lpuartBases)];
 /* Array of LPUART IRQ number. */
 #if defined(FSL_FEATURE_LPUART_HAS_SEPARATE_RX_TX_IRQ) && FSL_FEATURE_LPUART_HAS_SEPARATE_RX_TX_IRQ
-#if defined(LPUART_RX_IRQS)
 static const IRQn_Type s_lpuartRxIRQ[] = LPUART_RX_IRQS;
-#endif
-#if defined(LPUART_TX_IRQS)
 const IRQn_Type s_lpuartTxIRQ[]        = LPUART_TX_IRQS;
-#endif
 #else
-#if defined(LPUART_RX_TX_IRQS)
 const IRQn_Type s_lpuartIRQ[] = LPUART_RX_TX_IRQS;
-#endif
 #endif
 #if !(defined(FSL_SDK_DISABLE_DRIVER_CLOCK_CONTROL) && FSL_SDK_DISABLE_DRIVER_CLOCK_CONTROL)
 /* Array of LPUART clock name. */
@@ -486,17 +480,6 @@ status_t LPUART_Init(LPUART_Type *base, const lpuart_config_t *config, uint32_t 
             }
         }
 
-#if defined(FSL_FEATURE_LPUART_HAS_CTRL_SWAP) && FSL_FEATURE_LPUART_HAS_CTRL_SWAP
-        if (config->swapTxdRxd == true)
-        {
-            temp |= LPUART_CTRL_SWAP_MASK;
-        }
-        else
-        {
-            temp &= ~LPUART_CTRL_SWAP_MASK;
-        }
-#endif
-
         base->CTRL = temp;
 
 #if defined(FSL_FEATURE_LPUART_HAS_STOP_BIT_CONFIG_SUPPORT) && FSL_FEATURE_LPUART_HAS_STOP_BIT_CONFIG_SUPPORT
@@ -679,9 +662,6 @@ void LPUART_GetDefaultConfig(lpuart_config_t *config)
     config->rxIdleConfig = kLPUART_IdleCharacter1;
     config->enableTx     = false;
     config->enableRx     = false;
-#if defined(FSL_FEATURE_LPUART_HAS_CTRL_SWAP) && FSL_FEATURE_LPUART_HAS_CTRL_SWAP
-    config->swapTxdRxd   = false;
-#endif
 }
 
 /*!
@@ -1499,16 +1479,10 @@ void LPUART_TransferCreateHandle(LPUART_Type *base,
 
 /* Enable interrupt in NVIC. */
 #if defined(FSL_FEATURE_LPUART_HAS_SEPARATE_RX_TX_IRQ) && FSL_FEATURE_LPUART_HAS_SEPARATE_RX_TX_IRQ
-#if defined(LPUART_RX_IRQS)
     (void)EnableIRQ(s_lpuartRxIRQ[instance]);
-#endif
-#if defined(LPUART_TX_IRQS)
     (void)EnableIRQ(s_lpuartTxIRQ[instance]);
-#endif
 #else
-#if defined(LPUART_RX_TX_IRQS)
     (void)EnableIRQ(s_lpuartIRQ[instance]);
-#endif
 #endif
 }
 
